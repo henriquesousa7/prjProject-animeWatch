@@ -1,0 +1,1 @@
+<img src="<?= base_url("assets/images/bannerBoku.png") ?>" alt="banner home">
