@@ -1,1 +1,1 @@
-<img src="<?= base_url("assets/images/bannerBoku.png") ?>" alt="banner home">
+<img src="<?= base_url("application/assets/images/bannerBoku.png") ?>" alt="banner home" width="100%">

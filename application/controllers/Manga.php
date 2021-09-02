@@ -12,4 +12,6 @@ class Manga extends CI_Controller {
         chamaView('manga/mangaCadastro');
     }
 
+    public function cadastroManga(){}
+
 }

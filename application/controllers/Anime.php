@@ -12,4 +12,6 @@ class Anime extends CI_Controller {
         chamaView('anime/animeCadastro');
     }
 
+    public function cadastroAnime(){}
+
 }

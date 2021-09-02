@@ -4,19 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DataControl WEB</title>
-    <link rel="stylesheet" href="<?php echo base_url("libs/bootstrap/css/bootstrap.css"); ?>" />
-	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/my-login.css"); ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/style.css"); ?>">
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="<?php echo base_url("libs/bootstrap/js/bootstrap.js"); ?>"></script>
-    <script src="<?php echo base_url("assets/my-login.js"); ?>"></script>
+	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url("application/assets/css/style.css"); ?>"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url("application/assets/css/my-login.css"); ?>"/>
 </head>
-<body>
+<body class="fadeIn">
 <?php if($this->session->has_userdata('usuario')) : ?>
-  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <nav class="navbar navbar-expand-md bg-light navbar-light">
     
     <!-- Brand/logo -->
     <div>
