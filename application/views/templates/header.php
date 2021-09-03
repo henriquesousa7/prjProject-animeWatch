@@ -15,7 +15,7 @@
     
     <!-- Brand/logo -->
     <div>
-      <img src="<?= base_url("assets/images/logo.png") ?>" alt="Logo" width="30" class="mb-3">
+      <img src="<?= base_url("application/assets/images/logo.png") ?>" alt="Logo" width="30" class="mb-3">
       <a class="navbar-brand" href="<?= base_url("animeWatching") ?>">AnimesWatching</a>
     </div>
 
