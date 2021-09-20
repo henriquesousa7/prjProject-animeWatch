@@ -8,8 +8,7 @@ class Login extends CI_Controller {
 		if(!$this->session->has_userdata('usuario')){
 			chamaView('login/login');
 		} else {
-			//redirect("animeWatching");
-			echo $this->session->userdata('usuario');
+			redirect("animeWatching");
 		}
 	}
 
