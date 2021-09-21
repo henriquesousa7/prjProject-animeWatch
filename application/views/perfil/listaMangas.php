@@ -18,9 +18,11 @@
             <tbody>
                 <?php foreach($mangas as $manga): ?>
                     <tr class="text-center">
-                        <td><?= $manga['nome_manga'] ?></td>
+                    <td><?= $manga['nome_manga'] ?></td>
                         <td><?= $manga['genero_manga'] ?></td>
                         <td><?= $manga['qtd_caps'] ?></td>
+                        <td><?= $manga['status'] ?></td>
+                        <td><?= $manga['capitulo_atual'] ?></td>
                         <td><a href="adicionarMinhaLista/<?= $manga['id'] ?>" class="btn btn-primary resetButton">Editar</a></td>
                     </tr>
                 <?php endforeach; ?>

@@ -10,16 +10,16 @@ class Perfil extends CI_Controller {
 
         $dados_animes["animes"] = $this->anime_usuario->get_animes_usuario($this->session->userdata('id'));
 
-        chamaView('perfil/listaAnimes');
+        chamaView('perfil/listaAnimes', $dados_animes);
     }
 
     public function listaMangas() {
         $this->load->model("Mangas_model", "manga");
         $this->load->model("Mangas_usuario_model", "manga_usuario");
 
-        $dados_animes["mangas"] = $this->manga_usuario->get_mangas_usuario($this->session->userdata('id'));
+        $dados_mangas["mangas"] = $this->manga_usuario->get_mangas_usuario($this->session->userdata('id'));
 
-        chamaView('perfil/listaMangas');
+        chamaView('perfil/listaMangas', $dados_mangas);
     }
 
     public function myperfil() {

@@ -7,7 +7,9 @@ class Mangas_usuario_model extends CI_Model {
 	public function get_mangas_usuario($usuario_id){
 
 		$this->db->select('*')
-				->from('manga');
+				->from('manga_usuario')
+				->join("manga", "manga_usuario.manga_id = manga.id")
+				->where("manga_usuario.usuario_id", $usuario_id);
 		
 		$resultado = $this->db->get();
 		

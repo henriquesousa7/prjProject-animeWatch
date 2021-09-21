@@ -27,4 +27,18 @@ class Animes_model extends CI_Model {
 	
 		return $this->db->insert('anime', $dados_anime);
 	}
+
+	public function get_anime($anime_id){
+
+		$this->db->select('*')
+				->from('anime')
+				->where("id", $anime_id);
+		
+		$resultado = $this->db->get();
+		
+		if($resultado->num_rows() > 0){
+			return $resultado->result_array();
+		}		
+		return NULL;
+	}
 }

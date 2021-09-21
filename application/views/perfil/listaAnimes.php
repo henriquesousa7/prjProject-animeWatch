@@ -16,12 +16,14 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($mangas as $manga): ?>
+                <?php foreach($animes as $anime): ?>
                     <tr class="text-center">
-                        <td><?= $manga['nome_manga'] ?></td>
-                        <td><?= $manga['genero_manga'] ?></td>
-                        <td><?= $manga['qtd_caps'] ?></td>
-                        <td><a href="adicionarMinhaLista/<?= $manga['id'] ?>" class="btn btn-primary resetButton">Editar</a></td>
+                        <td><?= $anime['nome_anime'] ?></td>
+                        <td><?= $anime['genero_anime'] ?></td>
+                        <td><?= $anime['qtd_eps'] ?></td>
+                        <td><?= $anime['status'] ?></td>
+                        <td><?= $anime['episodio_atual'] ?></td>
+                        <td><a href="adicionarMinhaLista/<?= $anime['id'] ?>" class="btn btn-primary resetButton">Editar</a></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

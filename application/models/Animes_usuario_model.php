@@ -7,7 +7,9 @@ class Animes_usuario_model extends CI_Model {
 	public function get_animes_usuario($usuario_id){
 
 		$this->db->select('*')
-				->from('anime');
+				->from('anime_usuario')
+				->join("anime", "anime_usuario.anime_id = anime.id")
+				->where("anime_usuario.usuario_id", $usuario_id);
 		
 		$resultado = $this->db->get();
 		
