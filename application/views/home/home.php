@@ -35,7 +35,22 @@
                 </div>
             </div>
             <div class="col-4">
-                <h5 class="">Algumas noticias...</h5>
+                <h5 class="text-center">Alguns animes famosos da season...</h5>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12">
+                <h5 class="text-center">Algumas resenhas...</h5>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12">
+                <h5 class="text-center">Alguns animes ou mangas que a pessoa esta assistindo...</h5>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12">
+                <h5 class="text-center">Algumas noticias...</h5>
             </div>
         </div>
     </div>

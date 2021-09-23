@@ -39,7 +39,7 @@ class Manga extends CI_Controller {
 
         $dados_animes["mangas"] = $this->manga_usuario->cadastra_manga_usuario($manga_id, $this->session->userdata('id'));
 
-        chamaView('perfil/listaMangas');
+        redirect("perfil/listaMangas");
     }
 
 }

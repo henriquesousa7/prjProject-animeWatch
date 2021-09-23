@@ -23,9 +23,48 @@
                         <td><?= $anime['qtd_eps'] ?></td>
                         <td><?= $anime['status'] ?></td>
                         <td><?= $anime['episodio_atual'] ?></td>
-                        <td><a href="adicionarMinhaLista/<?= $anime['id'] ?>" class="btn btn-primary resetButton">Editar</a></td>
+                        <td><a id="editarAnimeMyList" class="btn btn-primary resetButton">Editar</a></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
     </div>
+
+<div class="modal fade" id="modalAnimeMyList" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar anime MyList</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="animeEpisodio" class="col-form-label">Episodio Visto:</label>
+            <input type="number" class="form-control" id="animeEpisodio" name="animeEpisodio" min=0>
+          </div>
+          <div class="form-group">
+            <select name="statusAnime" class="form-select">
+                <option value="Assistindo">Assistindo</option>
+                <option value="Em espera" selected>Em espera</option>
+                <option value="Finalizado">Finalizado</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Atualizar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    $("#editarAnimeMyList").click(function() {
+        $("#modalAnimeMyList").modal("show")
+    })
+
+</script>

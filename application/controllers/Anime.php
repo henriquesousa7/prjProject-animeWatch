@@ -39,7 +39,7 @@ class Anime extends CI_Controller {
 
         $dados_animes["animes"] = $this->anime_usuario->cadastra_anime_usuario($anime_id, $this->session->userdata('id'));
 
-        chamaView('perfil/listaAnimes');
+        redirect("perfil/listaAnimes");
     }
 
 }
