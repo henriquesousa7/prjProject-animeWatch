@@ -34,22 +34,60 @@
                     </a>
                 </div>
             </div>
-            <div class="col-4">
-                <h5 class="text-center">Alguns animes famosos da season...</h5>
+            <div class="col-4 jumbotron">
+                <?php foreach($animes as $index => $anime): ?>
+                    <?php if($index < 3): ?>
+                        <div class="row">
+                            <div class="col-6">
+                                
+                            </div>
+                            <div class="col-6">
+                                <div class="row">
+                                    <p><strong><?= $anime['nome_anime'] ?></strong></p>
+                                </div>
+                                <div class="row">
+                                    <p style="font-size: 14px;"><?= $anime['qtd_eps'] ?> vídeos</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                    <?php endif; ?>
+                <?php endforeach; ?>
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col-12">
+            <div class="col-8">
                 <h5 class="text-center">Algumas resenhas...</h5>
             </div>
+            <div class="col-4 jumbotron">
+                <?php foreach($mangas as $index => $manga): ?>
+                    <?php if($index < 3): ?>
+                        <div class="row">
+                            <div class="col-6">
+                                
+                            </div>
+                            <div class="col-6">
+                                <div class="row">
+                                <p><strong><?= $manga['nome_manga'] ?></strong></p>
+                                </div>
+                                <div class="row">
+                                <p style="font-size: 14px;"><?= $manga['qtd_caps'] ?> capítulos</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
         </div>
         <div class="row mt-5">
-            <div class="col-12">
+            <div class="col-8">
                 <h5 class="text-center">Alguns animes ou mangas que a pessoa esta assistindo...</h5>
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col-12">
+            <div class="col-8">
                 <h5 class="text-center">Algumas noticias...</h5>
             </div>
         </div>

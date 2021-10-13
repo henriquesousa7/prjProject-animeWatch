@@ -59,6 +59,11 @@
               <a class="dropdown-item" href="<?= base_url("perfil/listaAnimes"); ?>">Minha lista de Animes</a>
               <a class="dropdown-item" href="<?= base_url("perfil/listaMangas"); ?>">Minha lista de Mangás</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?= base_url("forum"); ?>" id="navbarForum">
+              Fórum
+            </a>
+          </li>
       </ul>
       <div class="ml-auto">
         <?= anchor('perfil/myPerfil', $this->session->userdata('usuario'), array("class" => "btn btn-primary"))?>

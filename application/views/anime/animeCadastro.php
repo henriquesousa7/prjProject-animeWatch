@@ -3,7 +3,7 @@
 </nav>
 <main>
     <div class="cd-form">
-        <form action="" method="post">
+        <form action="<?php echo site_url('anime/cadastroAnime'); ?>" method="post" enctype='multipart/form-data'>
             <h2 class="text-center">Adicionar Anime ao site</h2>       
             <div class="form-group">
                 <input type="text" class="form-control" name="nomeAnime" id="nomeAnime" required="required" placeholder="Nome do Anime" />
@@ -15,13 +15,16 @@
                 <input type="number" class="form-control" name="epsAnime" id="epsAnime" required="required" placeholder="Quantidade de Episodios" min="0"/>
             </div>
             <div class="form-group">
+                <input type="file" class="form-control-file" name="imagemAnime" id="imagemAnime" required="required"/>
+            </div>
+            <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block" id="adicionarAnime">Adicionar</button>
             </div>    
         </form>
     </div>
 </main>
 
-<script>
+<!-- <script>
     $("#adicionarAnime").on('click', function() {
         cadastrarAnime();
     })
@@ -39,6 +42,7 @@
                 nomeAnime:$('input[name="nomeAnime"]').val(),
                 generoAnime: $('input[name="generoAnime"]').val(),
                 epsAnime: $('input[name="epsAnime"]').val(),
+                imagemAnime: new FormData(this),
             },
             error: function(erro) {
                 //show_dialog_aguarde('hide');
@@ -78,4 +82,4 @@
             }
         });
     }
-</script>
+</script> -->

@@ -18,17 +18,41 @@ class Manga extends CI_Controller {
 
     public function cadastroManga(){
         $this->load->model("Mangas_model", "manga");
+        $this->load->model("Files_model", "files");
 
         if(!empty($_POST["nomeManga"]) && !empty($_POST["generoManga"]) && !empty($_POST["capsManga"])) {
             $retorno = $this->manga->cadastra_manga($_POST["nomeManga"], $_POST["generoManga"], $_POST["capsManga"]);
+
+            $refatorado_titulo = trim($_POST["nomeManga"]);
+		    $dir = './uploads/manga/' . 'MANGA_' . $refatorado_titulo;
             
             if($retorno) {
-                echo json_encode(["msg" => "Mangá cadastrado com sucesso", "status" => $retorno]);
+                verificar_diretorio($dir);
+
+                $config['upload_path']          = $dir;
+                $config['allowed_types']        = 'jpg|png|jpeg|pdf';
+                $config['max_size']             = 10000;
+                $config['max_width']            = 0;
+				$config['max_height']           = 0;
+				$config['file_name']            = 'MANGA_' . $refatorado_titulo;
+
+                $this->upload->initialize($config);
+
+                if ($this->upload->do_upload("imagemManga")) {
+                    $imagem_data = $this->upload->data();
+                    $data['img'] = $dir.$imagem_data['file_name'];
+    
+                    $tipo_arquivo = strstr($imagem_data['file_name'], '.');
+    
+                    if($this->files->insert_files($tipo_arquivo, $refatorado_titulo, $dir)){
+                        redirect("AnimeWatching");
+                    }
+                }
             } else {
-                echo json_encode(["msg" => "Nao foi possivel cadastrar o mangá", "status" =>$retorno]);
+                redirect("AnimeWatching");
             }
         } else {
-            echo json_encode(["msg" => "Nao foi possivel cadastrar o mangá2", "status" =>false]);
+            redirect("AnimeWatching");
         }
     }
 
