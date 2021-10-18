@@ -7,6 +7,7 @@
         <table class="table table-striped table-action">
             <thead>
                 <tr class="text-center">
+                    <th scope="col">Imagem</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Genero</th>
                     <th scope="col">Capitulos</th>
@@ -18,7 +19,8 @@
             <tbody>
                 <?php foreach($mangas as $manga): ?>
                     <tr class="text-center">
-                    <td><?= $manga['nome_manga'] ?></td>
+                        <td><img src="<?= base_url($manga['imagem']) ?>" /></td>
+                        <td><?= $manga['nome_manga'] ?></td>
                         <td><?= $manga['genero_manga'] ?></td>
                         <td><?= $manga['qtd_caps'] ?></td>
                         <td><?= $manga['status'] ?></td>

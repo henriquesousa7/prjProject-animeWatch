@@ -7,6 +7,7 @@
         <table class="table table-striped table-action">
             <thead>
                 <tr class="text-center">
+                    <th scope="col">Imagem</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Genero</th>
                     <th scope="col">Episódios</th>
@@ -18,6 +19,7 @@
             <tbody>
                 <?php foreach($animes as $anime): ?>
                     <tr class="text-center">
+                        <td><img src="<?= base_url($anime['imagem']) ?>" /></td>
                         <td><?= $anime['nome_anime'] ?></td>
                         <td><?= $anime['genero_anime'] ?></td>
                         <td><?= $anime['qtd_eps'] ?></td>

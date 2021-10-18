@@ -17,12 +17,13 @@ class Animes_model extends CI_Model {
 		return NULL;
 	}
 
-	public function cadastra_anime($nome, $genero, $qtd_eps){
+	public function cadastra_anime($nome, $genero, $qtd_eps, $imagem){
 
 		$dados_anime = array(
             'nome_anime' => $nome,
             'genero_anime' => $genero,
-            'qtd_eps' => $qtd_eps
+            'qtd_eps' => $qtd_eps,
+			'imagem' => $imagem
 		);
 	
 		return $this->db->insert('anime', $dados_anime);

@@ -17,12 +17,13 @@ class Mangas_model extends CI_Model {
 		return NULL;
 	}
 
-	public function cadastra_manga($nome, $genero, $qtd_caps){
+	public function cadastra_manga($nome, $genero, $qtd_caps, $imagem){
 
 		$dados_manga = array(
             'nome_manga' => $nome,
             'genero_manga' => $genero,
-            'qtd_caps' => $qtd_caps
+            'qtd_caps' => $qtd_caps,
+			'imagem' => $imagem
 		);
 	
 		return $this->db->insert('manga', $dados_manga);
