@@ -17,6 +17,7 @@
                 </tr>
             </thead>
             <tbody>
+            <?php if(isset($animes)): ?>
                 <?php foreach($animes as $anime): ?>
                     <tr class="text-center">
                         <td><img src="<?= base_url($anime['imagem']) ?>" /></td>
@@ -28,6 +29,7 @@
                         <td><a id="editarAnimeMyList" class="btn btn-primary resetButton">Editar</a></td>
                     </tr>
                 <?php endforeach; ?>
+              <?php endif; ?>
             </tbody>
         </table>
     </div>

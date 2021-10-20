@@ -17,6 +17,7 @@
                 </tr>
             </thead>
             <tbody>
+            <?php if(isset($mangas)): ?>
                 <?php foreach($mangas as $manga): ?>
                     <tr class="text-center">
                         <td><img src="<?= base_url($manga['imagem']) ?>" /></td>
@@ -28,6 +29,7 @@
                         <td><a id="editarMangaMyList" class="btn btn-primary resetButton">Editar</a></td>
                     </tr>
                 <?php endforeach; ?>
+              <?php endif; ?>
             </tbody>
         </table>
     </div>

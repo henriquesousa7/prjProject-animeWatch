@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("application/assets/css/style.css"); ?>"/>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("application/assets/css/my-login.css"); ?>"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -40,7 +42,9 @@
               Anime
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownCadastro">
-              <a class="dropdown-item" href="<?= base_url("anime/cadastroView"); ?>">Cadastrar</a>
+              <?php if($this->session->userdata('usuario') == "admin"): ?>
+                <a class="dropdown-item" href="<?= base_url("anime/cadastroView"); ?>">Cadastrar</a>
+              <?php endif; ?>
               <a class="dropdown-item" href="<?= base_url("anime/listaView"); ?>">Listar</a>
           </li>
           <li class="nav-item dropdown">
@@ -48,7 +52,9 @@
               Mangá
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownCadastro">
-              <a class="dropdown-item" href="<?= base_url("manga/cadastroView"); ?>">Cadastrar</a>
+              <?php if($this->session->userdata('usuario') == "admin"): ?>
+                <a class="dropdown-item" href="<?= base_url("manga/cadastroView"); ?>">Cadastrar</a>
+              <?php endif; ?>
               <a class="dropdown-item" href="<?= base_url("manga/listaView"); ?>">Listar</a>
           </li>
           <li class="nav-item dropdown">
