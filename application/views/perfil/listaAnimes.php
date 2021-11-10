@@ -13,20 +13,18 @@
                     <th scope="col">Episódios</th>
                     <th scope="col">Status</th>
                     <th scope="col">Episódio Atual</th>
-                    <th scope="col">Açao</th>
                 </tr>
             </thead>
             <tbody>
             <?php if(isset($animes)): ?>
                 <?php foreach($animes as $anime): ?>
-                    <tr class="text-center">
+                    <tr class="text-center" id="<?= $anime['anime_usuario_id'] ?>">
                         <td><img src="<?= base_url($anime['imagem']) ?>" /></td>
                         <td><?= $anime['nome_anime'] ?></td>
                         <td><?= $anime['genero_anime'] ?></td>
                         <td><?= $anime['qtd_eps'] ?></td>
                         <td><?= $anime['status'] ?></td>
                         <td><?= $anime['episodio_atual'] ?></td>
-                        <td><a id="editarAnimeMyList" class="btn btn-primary resetButton">Editar</a></td>
                     </tr>
                 <?php endforeach; ?>
               <?php endif; ?>
@@ -47,12 +45,12 @@
         <form>
           <div class="form-group">
             <label for="animeEpisodio" class="col-form-label">Episodio Visto:</label>
-            <input type="number" class="form-control" id="animeEpisodio" name="animeEpisodio" min=0>
+            <input type="number" class="form-control" id="animeEpisodio" name="animeEpisodio" min=0 value="10">
           </div>
           <div class="form-group">
-            <select name="statusAnime" class="form-select">
+            <select name="statusAnime" id="statusAnime" class="form-control">
                 <option value="Assistindo">Assistindo</option>
-                <option value="Em espera" selected>Em espera</option>
+                <option value="Em espera">Em espera</option>
                 <option value="Finalizado">Finalizado</option>
             </select>
           </div>
@@ -60,15 +58,65 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Atualizar</button>
+        <button type="button" class="btn btn-primary" id="atualizarAnimeUsuario">Atualizar</button>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-    $("#editarAnimeMyList").click(function() {
+    var tr = document.querySelectorAll('tr');
+    var base_url = window.location.origin + "/prjProject/perfil"
+    var idAnimeUsuario;
+
+    tr.forEach((el) => {
+      el.addEventListener('click', meuID);
+    });
+
+    function meuID(e) {
+      idAnimeUsuario = e.currentTarget.id
+      pegarDadosAnime(e.currentTarget.id)
+    }
+
+    function pegarDadosAnime(idAnime) {
+      $.ajax({
+        url : base_url + "/pegarDadosAnime",
+        type : 'post',
+        data : {
+              id : idAnime
+        },
+      })
+      .done(function(data){
+        console.log(data);
         $("#modalAnimeMyList").modal("show")
+        $("#animeEpisodio").val(data.episodio_atual)
+        $("#statusAnime").val(data.status)
+      })
+      .fail(function(jqXHR, textStatus, msg){
+        alert("Erro ao buscar anime");
+      });
+    }
+
+    $("#atualizarAnimeUsuario").click(function() {
+      $.ajax({
+        url : base_url + "/atualizarAnimeUsuario",
+        type : 'post',
+        data : {
+              id : idAnimeUsuario,
+              episodio : $("#animeEpisodio").val(),
+              status : $("#statusAnime").val()
+        },
+      })
+      .done(function(data){
+        window.location.href = 'listaAnimes'
+      })
+      .fail(function(jqXHR, textStatus, msg){
+        alert("Erro ao atualizar anime");
+      });
     })
+
+    function redirecionar() {
+
+    }
 
 </script>

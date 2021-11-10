@@ -13,20 +13,18 @@
                     <th scope="col">Capitulos</th>
                     <th scope="col">Status</th>
                     <th scope="col">Capitulo Atual</th>
-                    <th scope="col">Açao</th>
                 </tr>
             </thead>
             <tbody>
             <?php if(isset($mangas)): ?>
                 <?php foreach($mangas as $manga): ?>
-                    <tr class="text-center">
+                    <tr class="text-center" id="<?= $manga['manga_usuario_id'] ?>">
                         <td><img src="<?= base_url($manga['imagem']) ?>" /></td>
                         <td><?= $manga['nome_manga'] ?></td>
                         <td><?= $manga['genero_manga'] ?></td>
                         <td><?= $manga['qtd_caps'] ?></td>
                         <td><?= $manga['status'] ?></td>
                         <td><?= $manga['capitulo_atual'] ?></td>
-                        <td><a id="editarMangaMyList" class="btn btn-primary resetButton">Editar</a></td>
                     </tr>
                 <?php endforeach; ?>
               <?php endif; ?>
@@ -46,11 +44,11 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <label for="animeEpisodio" class="col-form-label">Capitulo Visto:</label>
-            <input type="number" class="form-control" id="animeEpisodio" name="animeEpisodio" min=0>
+            <label for="mangaCapitulo" class="col-form-label">Capitulo Visto:</label>
+            <input type="number" class="form-control" id="mangaCapitulo" name="mangaCapitulo" min=0>
           </div>
           <div class="form-group">
-            <select name="statusAnime" class="form-select">
+            <select name="statusManga" id="statusManga" class="form-control">
                 <option value="Lendo">Lendo</option>
                 <option value="Em espera" selected>Em espera</option>
                 <option value="Finalizado">Finalizado</option>
@@ -60,15 +58,61 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Atualizar</button>
+        <button type="button" class="btn btn-primary" id="atualizarMangaUsuario">Atualizar</button>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-    $("#editarMangaMyList").click(function() {
+    var tr = document.querySelectorAll('tr');
+    var base_url = window.location.origin + "/prjProject/perfil"
+    var idMangaUsuario;
+
+    tr.forEach((el) => {
+      el.addEventListener('click', meuID);
+    });
+
+    function meuID(e) {
+      idMangaUsuario = e.currentTarget.id
+      pegarDadosManga(e.currentTarget.id)
+    }
+
+    function pegarDadosManga(idManga) {
+      $.ajax({
+        url : base_url + "/pegarDadosManga",
+        type : 'post',
+        data : {
+              id : idManga
+        },
+      })
+      .done(function(data){
+        console.log(data);
         $("#modalMangaMyList").modal("show")
+        $("#mangaCapitulo").val(data.capitulo_atual)
+        $("#statusManga").val(data.status)
+      })
+      .fail(function(jqXHR, textStatus, msg){
+        alert("Erro ao buscar anime");
+      });
+    }
+
+    $("#atualizarMangaUsuario").click(function() {
+      $.ajax({
+        url : base_url + "/atualizarMangaUsuario",
+        type : 'post',
+        data : {
+              id : idMangaUsuario,
+              capitulo : $("#mangaCapitulo").val(),
+              status : $("#statusManga").val()
+        },
+      })
+      .done(function(data){
+        window.location.href = 'listaMangas'
+      })
+      .fail(function(jqXHR, textStatus, msg){
+        alert("Erro ao atualizar manga");
+      });
     })
 
 </script>

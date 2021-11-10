@@ -19,6 +19,20 @@ class Mangas_usuario_model extends CI_Model {
 		return NULL;
 	}
 
+	public function get_manga_usuario($manga_usuario_id){
+
+		$this->db->select('*')
+				->from('manga_usuario')
+				->where("manga_usuario.manga_usuario_id", $manga_usuario_id);
+		
+		$resultado = $this->db->get()->row();
+		
+		if($resultado){
+			return $resultado;
+		}		
+		return NULL;
+	}
+
 	public function cadastra_manga_usuario($manga_id, $usuario_id){
 
 		$dados_manga_usuario = array(
@@ -28,4 +42,16 @@ class Mangas_usuario_model extends CI_Model {
 	
 		return $this->db->insert('manga_usuario', $dados_manga_usuario);
 	}
+
+	public function atualizar_manga_usuario($manga_usuario_id, $capitulo, $status) {
+
+		$dados_manga_usuario = array(
+            'capitulo_atual' => $capitulo,
+			'status' => $status
+		);
+
+		$this->db->where('manga_usuario_id', $manga_usuario_id);
+   		return $this->db->update('manga_usuario', $dados_manga_usuario);
+
+	}	
 }
