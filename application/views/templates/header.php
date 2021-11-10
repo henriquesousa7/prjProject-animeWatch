@@ -72,7 +72,7 @@
           </li>
       </ul>
       <div class="ml-auto">
-        <?= anchor('perfil/myPerfil', $this->session->userdata('usuario'), array("class" => "btn btn-primary"))?>
+        <button class="btn btn-primary"><?= $this->session->userdata('usuario')?></button>
         <?= anchor('session/logout','Logout', array("class" => "btn btn-danger"))?>
       </div>
     </div>

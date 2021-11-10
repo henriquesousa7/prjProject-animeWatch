@@ -22,10 +22,6 @@ class Perfil extends CI_Controller {
         chamaView('perfil/listaMangas', $dados_mangas);
     }
 
-    public function myperfil() {
-        chamaView('perfil/myPerfil');
-    }
-
     public function pegarDadosAnime() {
         $this->load->model("Animes_model", "anime");
         $this->load->model("Animes_usuario_model", "anime_usuario");
