@@ -18,7 +18,7 @@
             <tbody>
             <?php if(isset($mangas)): ?>
                 <?php foreach($mangas as $manga): ?>
-                    <tr class="text-center" id="<?= $manga['manga_usuario_id'] ?>">
+                    <tr class="text-center" id="<?= $manga['manga_usuario_id'] ?>" capitulos="<?= $manga['qtd_caps'] ?>">
                         <td><img src="<?= base_url($manga['imagem']) ?>" /></td>
                         <td><?= $manga['nome_manga'] ?></td>
                         <td><?= $manga['genero_manga'] ?></td>
@@ -75,10 +75,10 @@
 
     function meuID(e) {
       idMangaUsuario = e.currentTarget.id
-      pegarDadosManga(e.currentTarget.id)
+      pegarDadosManga(e.currentTarget.id, e.currentTarget)
     }
 
-    function pegarDadosManga(idManga) {
+    function pegarDadosManga(idManga, tag) {
       $.ajax({
         url : base_url + "/pegarDadosManga",
         type : 'post',
@@ -89,6 +89,7 @@
       .done(function(data){
         console.log(data);
         $("#modalMangaMyList").modal("show")
+        $("#mangaCapitulo").attr("max", tag.getAttribute("capitulos"))
         $("#mangaCapitulo").val(data.capitulo_atual)
         $("#statusManga").val(data.status)
       })
@@ -114,5 +115,9 @@
         alert("Erro ao atualizar manga");
       });
     })
+
+    $(document).ready(function() {
+      $("#mangaCapitulo").attr("max")
+    }); 
 
 </script>

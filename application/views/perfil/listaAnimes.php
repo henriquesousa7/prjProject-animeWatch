@@ -18,7 +18,7 @@
             <tbody>
             <?php if(isset($animes)): ?>
                 <?php foreach($animes as $anime): ?>
-                    <tr class="text-center" id="<?= $anime['anime_usuario_id'] ?>">
+                    <tr class="text-center" id="<?= $anime['anime_usuario_id'] ?>" episodios="<?= $anime['qtd_eps'] ?>">
                         <td><img src="<?= base_url($anime['imagem']) ?>" /></td>
                         <td><?= $anime['nome_anime'] ?></td>
                         <td><?= $anime['genero_anime'] ?></td>
@@ -45,7 +45,7 @@
         <form>
           <div class="form-group">
             <label for="animeEpisodio" class="col-form-label">Episodio Visto:</label>
-            <input type="number" class="form-control" id="animeEpisodio" name="animeEpisodio" min=0 value="10">
+            <input type="number" class="form-control" id="animeEpisodio" name="animeEpisodio" min=0>
           </div>
           <div class="form-group">
             <select name="statusAnime" id="statusAnime" class="form-control">
@@ -75,10 +75,10 @@
 
     function meuID(e) {
       idAnimeUsuario = e.currentTarget.id
-      pegarDadosAnime(e.currentTarget.id)
+      pegarDadosAnime(e.currentTarget.id, e.currentTarget)
     }
 
-    function pegarDadosAnime(idAnime) {
+    function pegarDadosAnime(idAnime, tag) {
       $.ajax({
         url : base_url + "/pegarDadosAnime",
         type : 'post',
@@ -89,6 +89,7 @@
       .done(function(data){
         console.log(data);
         $("#modalAnimeMyList").modal("show")
+        $("#animeEpisodio").attr("max", tag.getAttribute("episodios"))
         $("#animeEpisodio").val(data.episodio_atual)
         $("#statusAnime").val(data.status)
       })
@@ -115,8 +116,7 @@
       });
     })
 
-    function redirecionar() {
-
-    }
-
+    $(document).ready(function() {
+      $("#animeEpisodio").attr("max")
+    }); 
 </script>
