@@ -5,8 +5,8 @@
                 <div class="card-wrapper">
                     <div class="card fat">
                         <div class="card-body">
-                            <h4 class="card-title">Login</h4>
-                            <form action="cadastrarUsuario/" method="post" class="my-login-validation">
+                            <h4 class="card-title text-center">Cadastro</h4>
+                            <form action="cadastrarUsuario/" method="post" class="my-login-validation" onsubmit="return validarSenha()">
                                 <div class="form-group">
                                     <label for="usuario">Usuario</label>
                                     <input id="usuario" type="text" class="form-control" name="usuario" required autofocus>
@@ -17,10 +17,12 @@
 
                                 <div class="form-group">
                                     <label for="senha">Senha</label>
-                                    <input id="senha" type="password" class="form-control" name="senha" required data-eye>
-                                    <div class="invalid-feedback">
-                                        Requer a senha
-                                    </div>
+                                    <input id="senha" type="password" class="form-control" name="senha" required>
+                                </div>
+
+                                <div class="form-group" id="password_message">
+                                    <label for="senha">Repetir senha</label>
+                                    <input id="senha2" type="password" class="form-control" name="senha2" required>
                                 </div>
 
                                 <div class="form-group m-0">
@@ -29,9 +31,32 @@
                                     </button>
                                 </div>
                             </form>
+                            <a href="<?= base_url("login/"); ?>" class="btn btn-primary btn-block mt-3">
+                                        Voltar
+                            </a>
                         </div>
                     </div>              
                 </div>
             </div>
         </div>
     </section>
+
+    <script>
+        function validarSenha(){
+            var senha1 = $('#senha');
+            var senha2 = $('#senha2');
+            if(senha1.val() !== senha2.val()){
+                event.preventDefault();
+                if(!$("#password-error").length){
+                    let divPassword = $('#password_message')
+                    let p = $('<p>', {class: "text-center text-danger", text: "Senhas Diferentes", id: "password-error"})
+                    divPassword.append(p);
+                }
+                senha1.val("")
+                senha2.val("")
+            }
+        }
+        $('#submitButton').click(function(){
+            validarSenha(event);
+        })
+    </script>

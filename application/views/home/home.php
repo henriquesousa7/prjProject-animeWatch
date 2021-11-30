@@ -66,21 +66,23 @@
                 <h5 class="text-center"><strong>Resenhas do Fórum</strong></h5>
 
                 <?php if(isset($forums)): ?>
-                    <?php foreach($forums as $forum): ?>
-                        <div class="row mt-4 border">
-                            <div class="col-4">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-circle" width="50" alt="User" />   
-                            </div>
-                            <div class="col-8">
-                                <div class="row">
-                                    <h6><a href="#" data-toggle="collapse" data-target=".forum-content" class="text-body"><?= $forum["titulo"] ?></a></h6>
+                    <?php foreach($forums as $index => $forum): ?>
+                        <?php if($index < 3): ?>
+                            <div class="row mt-4 border">
+                                <div class="col-4">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-circle" width="50" alt="User" />   
                                 </div>
-                                <div class="row">
-                                    <p class="text-secondary"><?= $forum["resenha"] ?></p>
-                                    <p ><a href="javascript:void(0)"><?= $forum["usuario"] ?></a> replied</p>
+                                <div class="col-8">
+                                    <div class="row">
+                                        <h6><a href="#" data-toggle="collapse" data-target=".forum-content" class="text-body"><?= $forum["titulo"] ?></a></h6>
+                                    </div>
+                                    <div class="row">
+                                        <p class="text-secondary"><?= $forum["resenha"] ?></p>
+                                        <p ><a href="javascript:void(0)"><?= $forum["usuario"] ?></a> replied</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 <?php endif; ?>
                 

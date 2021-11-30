@@ -4,11 +4,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Usuarios_model extends CI_Model {
 
-	public function get_usuario($id_usuario){
+	public function get_usuario($usuario){
 
 		$this->db->select('*')
 				->from("usuario")
-				->where("id", $id_usuario);
+				->where("usuario", $usuario);
 		
 		$resultado = $this->db->get();
 		

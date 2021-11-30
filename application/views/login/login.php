@@ -17,7 +17,7 @@
 
                                 <div class="form-group">
                                     <label for="senha">Senha</label>
-                                    <input id="senha" type="password" class="form-control" name="senha" required data-eye>
+                                    <input id="senha" type="password" class="form-control" name="senha" required>
                                     <div class="invalid-feedback">
                                         Requer a senha
                                     </div>

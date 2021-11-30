@@ -65,6 +65,7 @@
 </div>
 
 <script>
+    var testeDados;
     var tr = document.querySelectorAll('tr');
     var base_url = window.location.origin + "/prjProject/perfil"
     var idAnimeUsuario;
@@ -88,10 +89,10 @@
       })
       .done(function(data){
         console.log(data);
-        $("#modalAnimeMyList").modal("show")
         $("#animeEpisodio").attr("max", tag.getAttribute("episodios"))
-        $("#animeEpisodio").val(data.episodio_atual)
-        $("#statusAnime").val(data.status)
+        $("#animeEpisodio").val(JSON.parse(data).episodio_atual)
+        $("#statusAnime").val(JSON.parse(data).status)
+        $("#modalAnimeMyList").modal("show")
       })
       .fail(function(jqXHR, textStatus, msg){
         alert("Erro ao buscar anime");

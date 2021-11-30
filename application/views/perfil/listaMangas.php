@@ -88,10 +88,10 @@
       })
       .done(function(data){
         console.log(data);
-        $("#modalMangaMyList").modal("show")
         $("#mangaCapitulo").attr("max", tag.getAttribute("capitulos"))
-        $("#mangaCapitulo").val(data.capitulo_atual)
-        $("#statusManga").val(data.status)
+        $("#mangaCapitulo").val(JSON.parse(data).capitulo_atual)
+        $("#statusManga").val(JSON.parse(data).status)
+        $("#modalMangaMyList").modal("show")
       })
       .fail(function(jqXHR, textStatus, msg){
         alert("Erro ao buscar anime");
