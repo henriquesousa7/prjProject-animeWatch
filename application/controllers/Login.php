@@ -12,4 +12,25 @@ class Login extends CI_Controller {
 		}
 	}
 
+	public function cadastro_usuario()
+	{
+		chamaView('login/cadastro');
+	}
+
+	public function cadastrarUsuario()
+	{
+		$this->load->model("Usuarios_model", 'usuarios');
+        
+        $usuario = $_POST['usuario'];
+        $senha = $_POST['senha'];
+
+		if(!empty($senha) && !empty($usuario)) {
+			if($this->usuarios->cadastra_usuario($usuario, md5($senha))) {
+				redirect("login");
+			} else {
+				redirect("login");
+			}
+		}
+	}
+
 }

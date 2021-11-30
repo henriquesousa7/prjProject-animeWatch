@@ -7,10 +7,12 @@ class AnimeWatching extends CI_Controller {
 	{
         $this->load->model("Animes_model", "anime");
         $this->load->model("Mangas_model", "manga");
+        $this->load->model("Forum_model", "forum");
 
         $dados["animes"] = $this->anime->get_animes();
         $dados["mangas"] = $this->manga->get_mangas();
-
+        $dados["forums"] = $this->forum->get_forum();
+        
         chamaView('home/home', $dados);
     }
 

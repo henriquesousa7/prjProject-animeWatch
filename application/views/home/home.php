@@ -35,10 +35,11 @@
                 </div>
             </div>
             <div class="col-4 jumbotron">
+                <h5 class="text-center"><strong>Anime</strong></h5>
                 <?php if(isset($animes)): ?>
                     <?php foreach($animes as $index => $anime): ?>
                         <?php if($index < 3): ?>
-                            <div class="row">
+                            <div class="row mt-5">
                                 <div class="col-4">
                                     <div class="row">
                                         <img src="<?= base_url($anime['imagem']) ?>" />
@@ -62,13 +63,34 @@
         </div>
         <div class="row mt-5">
             <div class="col-8">
-            <h5 class="text-center"><strong>Resenhas do Fórum</strong></h5>
+                <h5 class="text-center"><strong>Resenhas do Fórum</strong></h5>
+
+                <?php if(isset($forums)): ?>
+                    <?php foreach($forums as $forum): ?>
+                        <div class="row mt-4 border">
+                            <div class="col-4">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-circle" width="50" alt="User" />   
+                            </div>
+                            <div class="col-8">
+                                <div class="row">
+                                    <h6><a href="#" data-toggle="collapse" data-target=".forum-content" class="text-body"><?= $forum["titulo"] ?></a></h6>
+                                </div>
+                                <div class="row">
+                                    <p class="text-secondary"><?= $forum["resenha"] ?></p>
+                                    <p ><a href="javascript:void(0)"><?= $forum["usuario"] ?></a> replied</p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+                
             </div>
             <div class="col-4 jumbotron">
+                <h5 class="text-center"><strong>Mangá</strong></h5>
                 <?php if(isset($mangas)): ?>
                     <?php foreach($mangas as $index => $manga): ?>
                         <?php if($index < 3): ?>
-                            <div class="row">
+                            <div class="row mt-5">
                                 <div class="col-4">
                                     <div class="row">
                                         <img src="<?= base_url($manga['imagem']) ?>" />
