@@ -1,10 +1,10 @@
 <body class="my-login-page">
     <section class="h-100">
-        <div class="container h-100">
+        <div class="container h-100 mt-5">
             <div class="row justify-content-md-center h-100">
                 <div class="card-wrapper">
                     <div class="card fat">
-                        <div class="card-body">
+                        <div class="card-body" style="padding-left: 90px; padding-right: 90px; padding-bottom: 70px;">
                             <h4 class="card-title">Login</h4>
                             <form action="session/" method="post" class="my-login-validation">
                                 <div class="form-group">
