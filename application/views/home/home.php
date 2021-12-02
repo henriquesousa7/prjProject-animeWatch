@@ -34,18 +34,44 @@
                     </a>
                 </div>
             </div>
-            <div class="col-4 jumbotron">
+            <div class="col-4">
+                <?php if(isset($forums)): ?>
+                    <?php foreach($forums as $index => $forum): ?>
+                        <?php if($index < 3): ?>
+                            <div class="row mt-4 border">
+                                <div class="col-4">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-circle" width="50" alt="User" />   
+                                </div>
+                                <div class="col-8">
+                                    <div class="row">
+                                        <h6><a href="#" data-toggle="collapse" data-target=".forum-content" class="text-body"><?= $forum["titulo"] ?></a></h6>
+                                    </div>
+                                    <div class="row">
+                                        <p class="text-secondary"><?= $forum["resenha"] ?></p>
+                                    </div>
+                                    <div class="row">
+                                        <p ><a href="javascript:void(0)"><?= $forum["usuario"] ?></a> replied</p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+            <div class="col-12 jumbotron mt-4">
                 <h5 class="text-center"><strong>Anime</strong></h5>
                 <?php if(isset($animes)): ?>
+                    <div class="row">
                     <?php foreach($animes as $index => $anime): ?>
+                        <div class="col-4">
                         <?php if($index < 3): ?>
                             <div class="row mt-5">
-                                <div class="col-4">
+                                <div class="col-3">
                                     <div class="row">
                                         <img src="<?= base_url($anime['imagem']) ?>" />
                                     </div>
                                 </div>
-                                <div class="col-8">
+                                <div class="col-9">
                                     <div class="row">
                                         <p><strong><?= $anime['nome_anime'] ?></strong></p>
                                     </div>
@@ -57,12 +83,14 @@
                             </div>
                             
                         <?php endif; ?>
+                        </div>
                     <?php endforeach; ?>
+                    </div>
                 <?php endif; ?>
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col-8">
+            <!-- <div class="col-8">
                 <h5 class="text-center"><strong>Resenhas do Fórum</strong></h5>
 
                 <?php if(isset($forums)): ?>
@@ -78,6 +106,8 @@
                                     </div>
                                     <div class="row">
                                         <p class="text-secondary"><?= $forum["resenha"] ?></p>
+                                    </div>
+                                    <div class="row">
                                         <p ><a href="javascript:void(0)"><?= $forum["usuario"] ?></a> replied</p>
                                     </div>
                                 </div>
@@ -86,35 +116,39 @@
                     <?php endforeach; ?>
                 <?php endif; ?>
                 
-            </div>
-            <div class="col-4 jumbotron">
+            </div> -->
+            <div class="col-12 jumbotron">
                 <h5 class="text-center"><strong>Mangá</strong></h5>
                 <?php if(isset($mangas)): ?>
-                    <?php foreach($mangas as $index => $manga): ?>
-                        <?php if($index < 3): ?>
-                            <div class="row mt-5">
-                                <div class="col-4">
-                                    <div class="row">
-                                        <img src="<?= base_url($manga['imagem']) ?>" />
+                    <div class="row">
+                        <?php foreach($mangas as $index => $manga): ?>
+                            <div class="col-4">
+                            <?php if($index < 3): ?>
+                                <div class="row mt-5">
+                                    <div class="col-3">
+                                        <div class="row">
+                                            <img src="<?= base_url($manga['imagem']) ?>" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-8">
-                                    <div class="row">
-                                    <p><strong><?= $manga['nome_manga'] ?></strong></p>
+                                    <div class="col-9">
+                                        <div class="row">
+                                        <p><strong><?= $manga['nome_manga'] ?></strong></p>
+                                        </div>
+                                        <div class="row">
+                                        <p style="font-size: 14px;"><?= $manga['qtd_caps'] ?> capítulos</p>
+                                        </div>
                                     </div>
-                                    <div class="row">
-                                    <p style="font-size: 14px;"><?= $manga['qtd_caps'] ?> capítulos</p>
-                                    </div>
-                                </div>
 
+                                </div>
+                            <?php endif; ?>
                             </div>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
+                        <?php endforeach; ?>
+                    </div>
                 <?php endif; ?>
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col-8">
+            <div class="col-12">
                 <h5 class="text-center"><strong>Últimas Notícias</strong></h5>
                 <div class="row mt-4 jumbotron">
                     <div class="col-4">
@@ -165,7 +199,6 @@ Faça sua voz ser ouvida! Indique quem você gostaria de ver como jurado no Anim
                         <p style="font-size: 14px;">Como revelado em agosto, Kenji Kamiyama (Ghost in the Shell: Stand Alone Complex) está trabalhando em um novo anime que deve estrear em janeiro de 2022 em comemoração os 30 anos do WOWOW, marca alcançada no último mês de abril. Agora, o site oficial de Eien no 831 divulgou novas informações sobre o projeto, além de artes dos personagens principais e um pouco mais de sua história</p>
                     </div>
                 </div>
-
                 </div>
             </div>
         </div>
